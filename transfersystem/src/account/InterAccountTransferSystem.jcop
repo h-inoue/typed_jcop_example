@@ -1,0 +1,11 @@
+package account;
+
+// import encryption.EncryptionLayer;
+// import encryption.Encryption;
+
+public class InterAccountTransferSystem {
+	public void transfer(Account from, Account to, float amount) {	
+		to.credit(amount);
+		from.debit(amount);
+	}
+}

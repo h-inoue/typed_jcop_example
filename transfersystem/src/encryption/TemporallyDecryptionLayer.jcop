@@ -1,0 +1,8 @@
+package encryption;
+
+public layer TemporallyDecryptionLayer extends EncryptionLayer{
+	public float account.Account.getBalance() {
+		System.out.println("tmp!");		
+		return proceed();
+	}
+}

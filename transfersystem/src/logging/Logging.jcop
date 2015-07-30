@@ -1,0 +1,29 @@
+package logging;
+import account.*;
+import encryption.EncryptionLayer;
+import encryption.Encryption;
+
+public layer Logging requires EncryptionLayer {
+	public void account.InterAccountTransferSystem.transfer(Account from, Account to, float amount) {
+		System.out.println("<transfer>");
+		System.out.println(" transfer amount " + amount);
+		proceed(from, to, amount);
+		System.out.println("</transfer>");
+	}
+	
+	public void account.Account.credit(float amount) {
+		proceed(amount);
+		System.out.println(" account (" + getBank() + "," + getAccountNumber() + "): credit ->" + amount);
+	}
+
+	public void account.Account.debit(float amount) {
+		System.out.println(" account (" + getBank() + "," + getAccountNumber() + "): debit ->" + amount);
+		proceed(amount);		
+	}	
+	 
+	public float account.Account.getBalance() {
+		float balance = proceed();
+		System.out.println(" account " + getBank() + "/" + getAccountNumber() + ": balance request ->" + balance);
+		return balance;
+	}
+}

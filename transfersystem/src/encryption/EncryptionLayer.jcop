@@ -1,0 +1,19 @@
+package encryption;
+import account.*;
+import encryption.*;
+
+public swappable layer EncryptionLayer {
+	public void account.InterAccountTransferSystem.transfer(Account from, Account to, float amount) {
+		proceed(from, to, Encryption.encrypt(amount));
+	}
+	public void account.Account.credit(float amount) {	
+		proceed(Encryption.decrypt(amount));
+	}
+	public void account.Account.debit(float amount) {
+		proceed(Encryption.decrypt(amount));
+	}		
+	public float account.Account.getBalance() {
+		System.out.println("enc!");
+		return Encryption.encrypt(proceed());
+	}
+}

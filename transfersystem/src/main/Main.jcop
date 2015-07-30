@@ -1,0 +1,69 @@
+package main;
+  
+import java.io.BufferedReader;
+import java.util.List;
+import java.io.*;
+import java.util.*;
+import account.Account;
+import account.Bank;
+import account.InterAccountTransferSystem;
+import encryption.Encryption;
+
+// import logging.Logging;
+import logging.*;
+import encryption.EncryptionLayer;
+import encryption.TemporallyDecryptionLayer;
+
+public class Main {	    
+	private Account a, b, c;
+	public EncryptionLayer enclayer;
+	public TemporallyDecryptionLayer tmplayer;
+	public Logging loglayer;
+	
+	public static void main(String[] args) {
+		new Main().transfer();
+	}
+	
+	public void transfer() {
+		Bank deutscheBank = new Bank("Deutsche Bank");
+		a = new Account(deutscheBank, 1);
+		a.credit(2000000);
+		b = new Account(deutscheBank, 2);
+		b.credit(5000000);
+		
+		Bank bankOfAmerica = new Bank("Bank of America");
+		c = new Account(bankOfAmerica, 1);
+		c.credit(13000045);
+		
+		enclayer = new EncryptionLayer();
+		loglayer = new Logging();
+		tmplayer = new TemporallyDecryptionLayer();
+
+		System.out.println("##with (Encryption)##");
+		with(enclayer){
+			commitTransfer();
+		}
+
+		System.out.println("##with (Encryption, Decryption)##");
+		with(enclayer){
+			with(loglayer){
+				commitTransfer();
+			}
+		}
+	}
+	
+	public void commitTransfer() {
+		InterAccountTransferSystem transfer = new InterAccountTransferSystem();
+		transfer.transfer(a, b, 300f);
+	    transfer.transfer(b, c, 300f);
+		a.getBalance();
+		b.getBalance();
+	    c.getBalance();
+		System.out.println("##Deactivate Encryption, Activate TemporallyDecryption##");
+		swap(EncryptionLayer, tmplayer){
+			a.getBalance();
+			b.getBalance();
+			c.getBalance();
+		}
+	}
+}
