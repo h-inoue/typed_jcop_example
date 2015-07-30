@@ -13,7 +13,7 @@ Go to https://github.com/h-inoue/JCop/releases and download jcop.jar.
 
 Language Constructs
 ------
-### Layer Definition ###
+#### Layer Definition ####
 TJCop supports only layer declaration as class-in-layer style.
 
     [swappable] layer L [extends L1] [requires L2, L3]{
@@ -21,7 +21,7 @@ TJCop supports only layer declaration as class-in-layer style.
     }
 
 
-### Partial Methods Declaration ###
+#### Partial Methods Declaration ####
 
 A name of partial methods must include full qualified class name.  You
 can also include proceed() call in the partial method body..
@@ -30,7 +30,7 @@ can also include proceed() call in the partial method body..
         ....
     }
 
-### Layer Activation/Swapping ###
+#### Layer Activation/Swapping ####
 
     with( expression ){
         ....
@@ -68,7 +68,7 @@ Type  Checking Examples
 A distinct feature of Typed JCop is COP originated type checking.  For
 example, considering to compile following code.
 
-### Simple Example ###
+#### Simple Example ####
 
     /** Weather.jcop **/
     package main;
@@ -114,7 +114,7 @@ message appears.
     $ jcopc.sh Main.jcop
     [COP type check completed :)]
 
-### Example of swapping ###
+#### Example of swapping ####
 
 Here, let's consider an example of bank transfer system.  
 
@@ -163,6 +163,6 @@ inconsistency of type checking.
 - Reflective layer composition
 - JCop API features
 
-### Bug ###
+#### Bug ####
 - When proceed() call continues to find a method of super class, it
   will stack.
