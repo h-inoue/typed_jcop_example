@@ -11,6 +11,28 @@ How to get compiler
 Go to https://github.com/h-inoue/JCop/releases and download jcop.jar.
 
 
+How to use the compiler
+-------
+
+In order to compile the example, you can use following command.
+
+    java -jar -ea "jcop.jar" <TJCop specific compiler options> class
+
+In bash, you can define following code as shell script, setting the
+variable $JCOP_HOME.
+
+    #!/bin/bash
+    java -jar -ea "$JCOP_HOME/jcop.jar" $*
+
+You can compile the example as follows.
+    
+    cd transfersystem
+    jcopc.sh -d bin -sourcepath src main.Main
+
+Then, you can run a program by normal java command.
+
+    java -cp bin main.Main
+
 Language Constructs
 ------
 #### Layer Definition ####
@@ -40,28 +62,6 @@ can also include proceed() call in the partial method body..
         ....
     }
 
-
-How to use the compiler
--------
-
-To compile, you can use following command.
-
-    java -jar -ea "tjcop.jar" <TJCop specific compiler options> class
-
-In bash, you can define following code as shell script, setting the
-variable $JCOP_HOME.
-
-    \#!/bin/bash
-    java -jar -ea "$JCOP_HOME/jcop.jar" $*
-
-You can compile the example as follows.
-    
-    cd transfersystem
-    jcopc.sh -d bin -sourcepath src main.Main
-
-Then, you can run a program by normal java command.
-
-    java -cp bin main.Main
 
 Type  Checking Examples
 ------
@@ -166,3 +166,7 @@ inconsistency of type checking.
 #### Bug ####
 - When proceed() call continues to find a method of super class, it
   will stack.
+
+References
+------
+[JCop](https://www.hpi.uni-potsdam.de/hirschfeld/trac/Cop/wiki/JCop)
