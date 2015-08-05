@@ -16,7 +16,7 @@ and follow the instruction of installation.
 
 How to use the compiler
 -------
-After setting `#JCOP_HOME` environment, you can compile the example as follows.
+After setting `JCOP_HOME` environment, you can compile the example as follows.
     
     cd transfersystem
     jcopc.sh -d bin -sourcepath src main.Main
