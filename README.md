@@ -8,23 +8,15 @@ of layer types, first-class layers and layer swapping.
 
 How to get compiler
 ------
-Go to https://github.com/h-inoue/JCop/releases and download jcop.jar.
+1. Please get original JCop compiler from the website (https://www.hpi.uni-potsdam.de/hirschfeld/trac/Cop/wiki/JCop),
+and follow the instruction of installation.
+
+2. Please go to https://github.com/h-inoue/JCop/releases , download `jcop.jar`, and replace the original one.
 
 
 How to use the compiler
 -------
-
-In order to compile the example, you can use following command.
-
-    java -jar -ea "jcop.jar" <TJCop specific compiler options> class
-
-In bash, you can define following code as shell script, setting the
-variable $JCOP_HOME.
-
-    #!/bin/bash
-    java -jar -ea "$JCOP_HOME/jcop.jar" $*
-
-You can compile the example as follows.
+After setting `#JCOP_HOME` environment, you can compile the example as follows.
     
     cd transfersystem
     jcopc.sh -d bin -sourcepath src main.Main
@@ -107,12 +99,6 @@ it works well.
             }
         }
     }
-
-If a program pass through COP specific type checking, following
-message appears.
-
-    $ jcopc.sh Main.jcop
-    [COP type check completed :)]
 
 #### Example of swapping ####
 
