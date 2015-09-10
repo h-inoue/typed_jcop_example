@@ -25,6 +25,10 @@ Then, you can run a program by normal java command.
 
     java -cp bin main.Main
 
+**Requirements**
+You may need JRE 7.
+The compiler will cause an error on JRE 8.
+
 Language Constructs
 ------
 #### Layer Definition ####
