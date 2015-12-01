@@ -21,11 +21,11 @@ After setting `JCOP_HOME` environment, you can compile the example as follows.
     cd transfersystem
     jcopc.sh -d bin -sourcepath src main.Main
 
-Then, you can run a program by normal java command.
+Then, you can run a program with normal java command.
 
     java -cp bin main.Main
 
-**Requirements**
+#### Requirements
 You may need JRE 7.
 The compiler will cause an error on JRE 8.
 
